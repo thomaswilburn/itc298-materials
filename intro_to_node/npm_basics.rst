@@ -30,7 +30,7 @@ Running our script should now produce the following output::
     This is the hello.js module
     Hello, Thomas!
 
-Two things happened here that are important: first, when we loaded our secondary module from hello.js, all the code inside of it ran. Even though loading modules requires file loading and other processes that are normally asynchronous, it's considered synchronous for ease-of-use in Node. So any code we insert there has a chance to initialize itself before it is used by another module, but this initialization is a one-time thing.
+Two things happened here that are important: first, when we loaded our secondary module from hello.js, all the code inside of it ran. Even though reading and parsing files are normally async, they're considered synchronous when you call ``require()`` for ease-of-use in Node. So any code we insert there has a chance to initialize itself before it is used by another module, but this initialization is a one-time thing.
 
 Second, we can transfer functions and other values from one module to another using the ``module.exports`` object, which is created for us in Node. In this case, we assigned an object to this value, so that the ``say`` function would be available in index.js. However, you can assign anything to ``module.exports``, including functions, strings, numbers, and booleans. You don't have to assign anything: if you don't, the module will return ``undefined`` when it's required.
 
