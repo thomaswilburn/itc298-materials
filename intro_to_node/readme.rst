@@ -4,9 +4,9 @@ Intro to Node
 Overview
 --------
 
-In 2009, Ryan Dahl released Node.js, which combined Google's V8 JavaScript engine with a set of C bindings to various system APIs. The initial purpose of this was to handle long-running file uploads: other server-side frameworks tended to treat each upload as a blocking task, meaning that a process was tied up completely until each upload finished. Node, on the other hand, almost exclusively uses "non-blocking" I/O, so it can process multiple requests while performing lengthy tasks outside of the scripting engine, such as writing to the file system or reading from the network.
+In 2009, Ryan Dahl released Node.js, which combined Google's V8 JavaScript engine with a set of C bindings to various system APIs. The initial purpose of this was to handle long-running file uploads for many simultaneous users: other server-side frameworks tended to treat each upload as a blocking task, meaning that a process was tied up until each upload finished completely. Node, on the other hand, almost exclusively uses "non-blocking" I/O, so it can handle multiple requests from a single server process, because it can run other pending tasks while waiting for incoming or outgoing data.
 
-Just as JavaScript itself is a conventional-looking language with a surprising heritage, Node's asynchronous nature is not entirely new: other languages and frameworks have used something similar. But few of them have had the kind of success experienced by Node. In addition to its uptake in the business community, Node has become the de-facto runtime for web development buid scripts and tooling.
+Just as JavaScript itself is a conventional-looking language with a heritage from some truly oddball languages, Node's asynchronous nature is not innovative: other languages and frameworks have used something similar, but few of them have had the kind of success experienced by Node. In addition to its uptake in the business community, Node has become the de-facto runtime for web development buid scripts and tooling. Where at one time useful tools would be written for a single platform (usually OS X), coders on Windows and Linux can now be equally productive.
 
 REPL
 ----
@@ -25,17 +25,17 @@ From this command line, you can perform any task available in JavaScript, althou
     > console.log(x);
     "Node is awesome"
 
-Of course, working entirely from inside the REPL is helpful, but not a good way to build large applications. Instead, we'll usually run a script from the command line. For example, place the following lines of code into a file named "index.js"::
+Of course, working entirely from inside the REPL is helpful and a great way to test ideas or run quick automated tasks, but it's not a good way to build large applications. Instead, we'll usually run a script from a file, by name. For example, place the following lines of code into a file named "index.js"::
 
     var text = "This space intentionally left blank.";
     console.log(text);
 
-We can run this file by using the following command in our shell: ``node index.js``. You should see the text string output to the shell, if it was successful.
+We can run this file by using the following command in our shell: ``node index.js``. You should see the text string output to the shell, if it was successful. 
 
 Modules
 -------
 
-In the browser, we can interface with the page using the built-in APIs, such as ``document.querySelector``. In Node, however, we don't have a page. Instead, the runtime provides an array of libraries that can be used to manipulate files, talk to other servers, and perform utility operations like encryption. These libraries are available via "modules," and loaded via the special ``require`` function. Let's try accessing the file system via the "fs" module::
+In the browser, we can interface with the page using the built-in APIs, such as ``document.querySelector``. In Node, however, we don't have a page to alter directly or a browser to run the code. Instead, the runtime provides an array of libraries that can be used to manipulate files, talk to other servers, and perform utility operations like encryption. These libraries are available via "modules," and loaded via the special ``require`` function. Let's try accessing the file system via the "fs" module::
 
     var fs = require("fs");
     
@@ -48,14 +48,14 @@ When a module is required, it can be assigned to a variable. At that point, we c
 
 After running this script, you should see a new file in the same directory as the script, containing the contents provided. From the same module, we can also read data from the disc, list items in a directory, and even move or rename files.
 
-In addition to the file system, Node comes with a large number of these built-in. For information on their function, please be sure to check the `API documentation <https://nodejs.org/docs/latest/api/>`__. Typically, however, we won't use these directly. Instead, we'll require libraries that are built on top of them, and written by the Node community. See the guide on NPM for more information (TK). 
+In addition to the file system, Node comes with a large number of these built-in. For information on their function, please be sure to check the `API documentation <https://nodejs.org/docs/latest/api/>`__. Typically, however, we won't use these directly. Instead, we'll require libraries that are built on top of them, and written by the Node community. See the guide on NPM for more information (npm_basics.rst in this folder). 
 
 Callbacks
 ---------
 
 You may have noticed that in the example above, we passed a function as the last argument to ``fs.writeFile``. This function was called when the file contents had been completely written to the hard drive. During that time, however, the Node runtime is capable of handling other requests and operations. In other words, it is "non-blocking," as compared to languages like PHP or Python, which are "blocking." In those languages, while a file is being written, no other operations can take place. This makes Node well-suited to web applications, which often perform lots of slow I/O over the network.
 
-APIs that yield to other processes while I/O occurs are called "asynchronous" (as opposed to "synchronous" operations that block progress). To keep this manageable, Node has adopted a convention for all async functions: the last argument is always a "callback" function, which will be run when the operation continues. Callbacks also follow a standard pattern. The first argument is always an optional error (or ``null`` if no error took place).
+APIs that yield to other processes while I/O occurs are called "asynchronous" (as opposed to "synchronous" operations that block progress). To keep this manageable, Node has adopted a convention for all async functions: the last argument is always a "callback" function, which will be run when the operation continues. Callbacks also follow a standard pattern themselves: the first argument is always an optional error (or ``null`` if no error took place).
 
 Let's put this in context. The following code reads a file that should contain a number, adds one, and then writes it back out. If, however, the file can't be read (because it doesn't exist or is locked), the process logs an error and quits::
 
@@ -89,14 +89,4 @@ As you can see, Node programs can quickly become very deeply indented with neste
     
     fs.readFile("number.txt", "utf8", onRead);
     
-We will also learn more about how to manage deep asynchronous processes in another lecture. But for now, breaking code into multiple named will make it much easier to write Node scripts. Consider, for example a typical web request, which involves:
-
-* Getting a page request
-* Reading the page template from the hard drive
-* Writing to site analytics
-* Talking to a database for data
-* Performing GZIP compression on the response text
-* Responding to the browser
-* Cleaning up once the response is complete
-
-Clearly, learning to handle asynchronicity will be one of the most difficult (and most important) skills we'll learn in this class.
+Because it uses callbacks and function arguments to pass data, instead of function return values and ``=``, we could say that asynchronicity in Node is "contagious:" if a function calls an async API at any point, it must itself become asynchronous and use this pattern, because it'll no longer be able to immediately return a value. Bear this in mind when writing your own code. It's good practice to write your own functions in such a way that they follow the Node conventions: the last argument should be a callback, and the first argument to that callback should be an optional error parameter.
