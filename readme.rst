@@ -29,10 +29,10 @@ Course outline
 2. Managing Node complexity - async, closures, and mutable state
 3. Intro to HapiJS - routes, responses, and configuration
 4. HapiJS page basics - templating and form handling
-5. Intro to Grunt - basic configuration, plugins, and file watchers
-6. Intro to Backbone - client-side MVC and templating
-7. Packaging resources with Browserify
-8. Structuring Hapi for maintainable API development
+5. HapiJS special topics - authentication and sessions
+6. Intro to Grunt - basic configuration, plugins, and file watchers
+7. Intro to Backbone - client-side MVC and templating
+8. Packaging resources with Browserify
 9. Realtime communication with WebSockets
 10. New ES6 features with Babel
 
