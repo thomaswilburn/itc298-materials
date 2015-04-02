@@ -1,4 +1,10 @@
 Project specifications: Blog content management system
+======================================================
+
+Difficulty
+----------
+
+3 out of 5
 
 Abstract
 --------

@@ -1,6 +1,11 @@
 Project specifications: Chat client
 ===================================
 
+Difficulty
+----------
+
+2 out of 5
+
 Abstract
 --------
 
