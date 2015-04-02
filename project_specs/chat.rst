@@ -22,3 +22,4 @@ Nice-to-haves
 * Allow users to upload or insert images and other media into the chatroom
 * Authenticate users and allow access only via administered accounts
 * Store timestamped logs as long as the server is running
+* Use the HTML5 notifications API to pop up messages even when the tab isn't visible
