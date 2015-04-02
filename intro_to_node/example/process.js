@@ -1,6 +1,8 @@
 var url = require("url"); //load the built-in URL module
 
 module.exports = {
+  //this function is written async style, with a trailing callback argument
+  //it doesn't have to be, but I wanted to illustrate how we would do so
   findURLs: function(text, callback) {
     var re = /(https?:)?\/\/[\w\.-\/]+/g; //regular expression that finds URLs
     var found = text.match(re);
