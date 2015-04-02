@@ -26,7 +26,7 @@ Course outline
 --------------
 
 1. Intro to Node - modules, NPM, and callbacks
-2. Managing Node complexity - async, closures, and mutable state
+2. Managing Node complexity - async, events, and closures
 3. Intro to HapiJS - routes, responses, and configuration
 4. HapiJS page basics - templating and form handling
 5. HapiJS special topics - authentication and sessions
