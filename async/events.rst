@@ -1,5 +1,8 @@
+Events and Streams
+==================
+
 Event Emitters
-==============
+--------------
 
 In addition to regular callbacks, some Node objects also communicate through events. Usually, events are used instead of callbacks when the target is a long-lived object instead of simply an API function. For example, the ``http`` module lets us create servers, and then fires a ``request`` event whenever a page request comes in::
 
@@ -76,4 +79,4 @@ Streams can also be connected via a "pipe," which may sound familiar if you have
     var output = fs.createWriteStream("google.html");
     request("http://google.com").pipe(output);
 
-Using pipes this way is much easier than manually feeding the data from one stream to the next. By using pipes, we can create a program where data literally flows through our code, and we deal with it gradually, not all at once.
+Using pipes this way is much easier than manually feeding the data from one stream to the next as each stage completes. By using pipes, we can create a program where data literally flows through our code, and we deal with it gradually, not all at once.
