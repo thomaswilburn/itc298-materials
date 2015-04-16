@@ -1,0 +1,16 @@
+{
+  "name": "intro-to-hapi",
+  "version": "1.0.0",
+  "description": "A first HapiJS application example",
+  "main": "index.js",
+  "dependencies": {
+    "commonmark": "^0.18.1",
+    "hapi": "^8.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
