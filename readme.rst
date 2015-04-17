@@ -25,16 +25,15 @@ There is no required textbook for this course. Class materials will be posted to
 Course outline
 --------------
 
-1. Intro to Node - modules, NPM, and callbacks
-2. Managing Node complexity - async, events, and closures
-3. Intro to HapiJS - routes, responses, and configuration
-4. HapiJS page basics - templating and form handling
-5. HapiJS special topics - authentication and sessions
-6. Intro to Grunt - basic configuration, plugins, and file watchers
-7. Intro to Backbone - client-side MVC and templating
-8. Packaging resources with Browserify
-9. Realtime communication with WebSockets
-10. New ES6 features with Babel
+1. `Intro to Node <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_node>`__ - modules, NPM, and callbacks
+2. `Managing Node complexity <https://github.com/thomaswilburn/itc298-materials/tree/master/async>`__ - async, events, and closures
+3. Functional programming - Array.forEach, async.each, and Function.apply
+4. `Intro to HapiJS <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_hapi>`__ - routes, responses, and configuration
+5. HapiJS page basics - templating and form handling
+6. HapiJS special topics - authentication and sessions
+7. Intro to Grunt - basic configuration, plugins, and file watchers
+8. Intro to Backbone - client-side MVC and templating
+9. Packaging resources with Browserify
 
 Topics will be covered in this class at a rate of one per week. Tuesdays will be lecture, and Thursdays will be a directed lab, with students working independently or in small groups to solve a small problem based on that week's topic. Toward the end of the quarter, this may be instead spent on consulting time for the final project.
 
