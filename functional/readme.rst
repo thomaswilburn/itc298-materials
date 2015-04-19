@@ -68,3 +68,90 @@ Of course, this function is extremely helpful for writing clear, readable array 
 Asynchronous code, callbacks, and iterators
 -------------------------------------------
 
+First, let's set up a simulated asynchronous function call. We'll use the ``setTimeout`` built-in function, which calls its first argument after a certain number of milliseconds. For example, this code waits one second, then logs "done"::
+
+    setTimeout(function() { console.log("done") }, 1000);
+
+Our ``doubleAsync`` function pauses for a random amount of time up to one second, then returns its initial input times two by calling the callback function, Node-style::
+
+    var doubleAsync = function(input, callback) {
+      //delay time from 1-1000 ms
+      var wait = Math.round(Math.random() * 1000);
+      setTimeout(function() {
+        //null because no errors
+        callback(null, input * 2);
+      }, wait);
+    };
+    
+    //this will log 4 after a random delay
+    doubleAsync(2, function(err, result) {
+      console.log(result);
+    });
+
+Now, what if we want to double each item in an array, but using our asynchronous function? This won't work::
+
+    var numbers = [1, 2, 3];
+    
+    //won't work, because doubleAsync doesn't return anything immediately
+    for (var i = 0; i < numbers.length; i++) {
+      numbers[i] = doubleAsync(numbers[i]);
+    }
+    
+    //this will technically work, but output will be shuffled...
+    var output = [];
+    for (var i = 0; i < numbers.length; i++) {
+      doubleAsync(numbers[i], function(err, result) {
+        output.push(result);
+      });
+    }
+    //...and it'll be empty right now because of the delay
+    console.log(output.length); // 0
+    
+We need to do two things in order to work with lists asynchronously. First, we need to keep track of how many items have been been processed, so that we can write code that only runs after the whole list operation is done. Let's start with that::
+
+    var asyncEach = function(list, fn, completed) {
+      //counter variable to track completed items
+      var counter = 0;
+      //loop through, incrementing counter each time
+      list.forEach(function iter(item, i) {
+        //call the async function on each item
+        fn(item, function check(err, result) {
+          //when that function completes, increment counter
+          counter++;
+          if (counter == list.length) {
+            //call completed when all items are done
+            completed();
+          }
+        });
+      });
+    };
+
+This code is a lot to dig through, so let's look at what happens for a single item of a list we pass in. We call ``asyncEach`` and pass in an array, an "iterator" function that's called on each item, and a final function to be called when everything is done. Inside ``asyncEach``, the list is looped via ``forEach`` and each item and its index are passed to inner function ``iter``. Inside *that* function, we call the actual asynchronous code that the user passed in, and we provide ``check`` as its callback. When the user calls that callback, ``check`` adds one to the counter, and once it reaches the same as the list length all items are complete, so we finally call the ``completed`` function.
+
+The second requirement for handling a list asynchronously is that we need to be able to process the list out of order, but still get the results in the same order that they were in the original array. To do that, we just need to add a few new lines, one to construct the result array, one to assign the results, and one to pass it to the final callback. This is no longer an "each" loop, it's become a "map"::
+
+    var asyncMap = function(list, fn, completed) {
+      var counter = 0;
+      //NEW LINE: create empty array
+      var output = [];
+      list.forEach(function(item, i) {
+        fn(item, function(err, result) {
+          //NEW LINE: assign the result to the same slot
+          output[i] = result;
+          counter++
+          if (counter == list.length) {
+            //UPDATED: provide the output to the completed callback
+            completed(null, output);
+          }
+        });
+      });
+    };
+    
+    //let's use it!
+    var numbers = [1, 2, 3];
+    asyncMap(numbers, doubleAsync, function(err, result) {
+      //it'll take some time, but this should log out [2, 4, 6]
+      console.log(result);
+    });
+
+Obviously, this code is complicated, and we wouldn't want to write it every time: that's why we have the ``async`` module. But it is useful to know how the module works, since it illustrates a great deal about how asynchronicity works, and how JavaScript's functions let us manage it through careful programming and conventions like the "callback last" argument order.
