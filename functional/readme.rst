@@ -1,7 +1,7 @@
 Functional programming
 ======================
 
-By far, the most important you must master in JavaScript is the function. Especially if you're coming from other programming languages, you probably think about functions in fairly simple terms: they're effectively user-defined commands. They save us from using copy and paste, by allowing us to package up multiple lines of code and execute them easily. And all those are true of JavaScript as well, but they go far beyond that.
+By far, the most important concept you must master in JavaScript is the function. Especially if you're coming from other programming languages, you probably think about functions in fairly simple terms: they're effectively user-defined commands. They save us from using copy and paste, by allowing us to package up multiple lines of code and execute them easily. And all those are true of JavaScript as well, but it goes far beyond that.
 
 Let's dig into functions a little bit, and see what makes them so special in this language. First, you should already be aware that functions are first-class values in JavaScript, just like strings, numbers, booleans, and objects. Although there are many ways to define a function, the easiest way is simply to assign them to a variable::
 
@@ -13,7 +13,7 @@ Let's dig into functions a little bit, and see what makes them so special in thi
     
     g(); //logs "Hi, I'm a function!"
 
-In that code block, we can also create new variables that point to the same function, and when we execute them, the same code runs. It's the same as if we had a variable defined as ``12``, and then pointed another variable at the first, causing both of them to have the same value.
+In that code block, we can also create new variables that point to the same function, and when we execute them, the same code runs. It's the same as if we had a variable defined as ``12``, and then pointed another variable at the first, causing both of them to have the same value. Note that a function without parentheses means that we are referring to it as a value. By putting parentheses after it, with or without arguments, we are calling that function, and it will evaluate to its return value for the purposes of variable assignment or operations.
 
 Considering that functions are simply variables, and follow the same properties as all other variables, what about function arguments? Can we pass one function into another? Of course! If you've used jQuery or other browser event frameworks, you've done this when setting up event listeners. Here's an example of creating two functions, one of which calls the other::
 
@@ -87,6 +87,8 @@ Our ``doubleAsync`` function pauses for a random amount of time up to one second
     doubleAsync(2, function(err, result) {
       console.log(result);
     });
+
+In order to get the result of an asynchronous operation, we must pass in a function to be called once the process is complete. We can't simply set an item equal to the return value, because (at the time that the function is called) there is no return value, because we're still waiting! A callback lets us be notified when the result is actually available, sometime after the original call has completed.
 
 Now, what if we want to double each item in an array, but using our asynchronous function? This won't work::
 
