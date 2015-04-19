@@ -20,14 +20,14 @@ Students entering this class should have a basic understanding of JavaScript, pr
 
 Students must own a computer on which they can install software, and have a working Internet connection. This course will use `Node.js <https://nodejs.org>`__ extensively, and a syntax-highlighting editor like `Atom <http://atom.io>`__ or `Sublime Text <http://sublimetext.com>`__ is highly recommended. A GitHub account is required for the class, and use of the GitHub client for `Windows <http://windows.github.com>`__ or `Mac <http://mac.github.com>`__ would be a good idea.
 
-There is no required textbook for this course. Class materials will be posted to this repo, including links to documentation for the week's lecture and example source code.
+There is no required textbook for this course. Class materials will be posted to this repo, including links to documentation for the week's lecture and example source code. Recordings are available of each lecture `here <https://github.com/thomaswilburn/itc298-materials/tree/master/recordings.rst>`__.
 
 Course outline
 --------------
 
 1. `Intro to Node <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_node>`__ - modules, NPM, and callbacks
 2. `Managing Node complexity <https://github.com/thomaswilburn/itc298-materials/tree/master/async>`__ - async, events, and closures
-3. Functional programming - Array.forEach, async.each, and Function.apply
+3. `Functional programming <https://github.com/thomaswilburn/itc298-materials/tree/master/functional>`__ - Array.forEach, async.each, and Function.apply
 4. `Intro to HapiJS <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_hapi>`__ - routes, responses, and configuration
 5. HapiJS page basics - templating and form handling
 6. HapiJS special topics - authentication and sessions
