@@ -1,7 +1,7 @@
 Directed Lab - async.series
 ===========================
 
-In class this week, we wrote our own version of ``async.each`` together. This week, we're going to take on ``async.serial``, which operates in a slightly different fashion: instead of processing a list of items in parallel, ``serial`` runs a list of functions one after another. Unlike ``async.waterfall``, it does not pass the result of the each function to the next, so we don't have to worry about that.
+In class this week, we wrote our own version of ``async.each`` together. This week, we're going to take on ``async.series``, which operates in a slightly different fashion: instead of processing a list of items in parallel, ``series`` runs a list of functions one after another. Unlike ``async.waterfall``, it does not pass the result of the each function to the next, so we don't have to worry about that.
 
 Here's the description, straight from the ``async`` manual page:
 
@@ -12,9 +12,9 @@ Here's the description, straight from the ``async`` manual page:
     * ``tasks`` - An array or object containing functions to run, each function is passed a ``callback(err, result)`` it must call on completion with an error ``err`` (which can be null) and an optional ``result`` value.
     * ``callback(err, results)`` - An optional callback to run once all the functions have completed. This function gets a results array (or object) containing all the result arguments passed to the task callbacks.
 
-There are no required modules for this activity, and we'll talk about any bootstrap code that you may need. Assuming that you named your function ``asyncSerial``, the following code should produce a list of numbers from 1 to 3 in order when run::
+There are no required modules for this activity, and we'll talk about any bootstrap code that you may need. Assuming that you named your function ``asyncSeries``, the following code should produce a list of numbers from 1 to 3 in order when run::
 
-    asyncSerial([
+    asyncSeries([
       function(callback) {
         console.log(1);
         callback();
@@ -36,6 +36,7 @@ Thoughts to ponder
 * You're going to be passed an array of function values. Start by thinking about how you would loop through and run each function in the array.
 * Clearly, you're going to need to keep track of how far you've gotten through the list of functions, so that you can run the next function when each one completes.
 * A big part of the secret is in the callback function that's passed to each individual function. Think carefully about what it needs to do in order to start the next item.
+* I don't recommend looking at the code to ``async``'s implementation for help: it's written in a very convoluted style. Ours will be much more straight-forward.
 
 Steps
 -----
