@@ -23,7 +23,7 @@ There are no required modules for this activity, and we'll talk about any bootst
           console.log(2);
           callback();
         }, 1000);
-      }, console.log.bind(console, 3);
+      }, console.log.bind(console, 3)
     ], function(err) {
       console.log("This should not run unless there are errors.");
     });
@@ -37,6 +37,7 @@ Thoughts to ponder
 * Clearly, you're going to need to keep track of how far you've gotten through the list of functions, so that you can run the next function when each one completes.
 * A big part of the secret is in the callback function that's passed to each individual function. Think carefully about what it needs to do in order to start the next item.
 * I don't recommend looking at the code to ``async``'s implementation for help: it's written in a very convoluted style. Ours will be much more straight-forward.
+* The final callback will not be called just using the example code, but would be called if there was an error, or if the final function executed its callback. How would you add this functionality to your ``asyncSeries``?
 
 Steps
 -----
