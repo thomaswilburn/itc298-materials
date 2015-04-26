@@ -4,7 +4,7 @@ Intro to Hapi.js
 History and Overview
 --------------------
 
-First released in 2012, Hapi.js is a web framework for Node originally built by a team at Walmart. In his `introduction post <http://hueniverse.com/2012/12/20/hapi-a-prologue/>`__, lead developer Eran Hammer describes how it was originally built on top of the Express framework, but rapidly outgrew it and began to offer a more standardized, configurable platform. The framework has proven successful, handling Black Friday traffic for one of the largest retailers in the world with relatively low hardware requirements.
+First released in 2012, `Hapi.js <http://hapijs.com>`__ is a web framework for Node originally built by a team at Walmart. In his `introduction post <http://hueniverse.com/2012/12/20/hapi-a-prologue/>`__, lead developer Eran Hammer describes how it was originally built on top of the Express framework, but rapidly outgrew it and began to offer a more standardized, configurable platform. The framework has proven successful, handling Black Friday traffic for one of the largest retailers in the world with relatively low hardware requirements.
 
 Hapi.js is not a CMS like WordPress, although it can be used to build one if you want. It is a lower-level, more general-purpose application framework, playing a role most similar to Ruby on Rails or Laravel. This means it may be different from the systems you're familiar with. However, Hapi does offer us a tremendous amount of power to write powerful applications that don't fall into the "blog" archetype, including RESTful URLs, API creation, and multi-user authenticated systems.
 
