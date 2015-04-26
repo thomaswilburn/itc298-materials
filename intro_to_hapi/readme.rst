@@ -56,3 +56,48 @@ This style of creating URLs that stand for resources in our application is known
 
 Now when you visit ``localhost:8080/Thomas``, you should see "Hello, Thomas!" on the page. Hapi uses the ``{name}`` portion of the route you register, and matches it against the URL that a user requests. Any matching parameters are added to the ``request`` object that's passed to your handler function.
 
+Using Views
+-----------
+
+While it's possible to reply to every request via strings generated in the handler function, it's probably not a wise way to engineer an application. We could write our own templating system (and I highly recommend you do, as a learning experience), but in the interests of efficiency, let's use Hapi's view system to load and render templates. We'll use the well-known `Handlebars <http://handlebarsjs.com>`__ library, but many templating libraries are compatible with Hapi, depending on your needs.
+
+To begin, we need to install Handlebars (using ``npm install handlebars --save``) and then tell Hapi about it. We do so by using the server's ``views`` method::
+
+    server.views({
+      engines: {
+        //these templates end in .hbs
+        hbs: require("handlebars")
+      },
+      //we'll put our templates in a directory named...
+      path: "templates"
+    });
+
+We'll also need to create the template itself. In a new ``templates`` directory, create a file named ``index.hbs`` and insert the following code::
+
+    <!doctype html>
+    <html>
+      <body>
+        Welcome to tables.biz! Here are the reservations for {{restaurant}}:
+        
+        <ul>
+          <li> No reservations found
+        </ul>
+      </body>
+    </html>
+
+Handlebars is a logic-less template system, so unlike PHP it does not let you write code directly into the template. Instead, from our route, we'll pass in a context object that contains keys matching the bracket-delimited tags in our template (these are technically `Handlebars expressions <http://handlebarsjs.com/expressions.html>`__). In a new route, let's use this template::
+
+    server.route({
+      method: "GET",
+      //new route path
+      path: "reservations/{where}",
+      handler: function(req, reply) {
+        //request this view, passing in context
+        reply.view("index.hbs", {
+          //replace "{{restaurant}}" with the name
+          restaurant: req.params.where
+        });
+      }
+    });
+
+You should now be able to visit ``localhost:8080/reservations/MaOno`` and see your template with the restuarant name filled in. The most important thing about views is that they let us separate our business logic (in this case, the creation, deletion, and management of reservations) from the visual output of the site. In a real application, we would create separate modules (controllers) that only manage and update our data (models) in a template-agnostic way, similar to the way that we should write our HTML and JavaScript as CSS-agnostic, so that pages can be restyled without affecting functionality or semantics.
