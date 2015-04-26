@@ -2,6 +2,9 @@ var fs = require("fs");
 var markdown = require("commonmark");
 var path = require("path");
 
+//CommonMark is a MarkDown text converter
+//we use the following objects to turn MarkDown text into HTML
+//see commonmark.org for more info
 var renderer = new markdown.HtmlRenderer();
 var parser = new markdown.Parser();
 
