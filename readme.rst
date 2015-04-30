@@ -29,11 +29,11 @@ Course outline
 2. `Managing Node complexity <https://github.com/thomaswilburn/itc298-materials/tree/master/async>`__ - async, events, and closures
 3. `Functional programming <https://github.com/thomaswilburn/itc298-materials/tree/master/functional>`__ - Array.forEach, async.each, and Function.apply
 4. `Intro to HapiJS <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_hapi>`__ - routes, responses, and configuration
-5. HapiJS page basics - templating and form handling
-6. HapiJS special topics - authentication and sessions
-7. Intro to Grunt - basic configuration, plugins, and file watchers
-8. Intro to Backbone - client-side MVC and templating
-9. Packaging resources with Browserify
+5. HapiJS site basics - public resources, advanced Handlebars templating
+6. Intro to Grunt - basic configuration, plugins, and file watchers
+7. Intro to Backbone - client-side MVC and templating
+8. Packaging resources with Browserify
+9. HapiJS special topics - authentication and sessions
 
 Topics will be covered in this class at a rate of one per week. Tuesdays will be lecture, and Thursdays will be a directed lab, with students working independently or in small groups to solve a small problem based on that week's topic. Toward the end of the quarter, this may be instead spent on consulting time for the final project.
 
