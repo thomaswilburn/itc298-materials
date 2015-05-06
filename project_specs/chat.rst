@@ -1,13 +1,5 @@
-Project specifications: Chat client
-===================================
-
-Difficulty
-----------
-
-2 out of 5
-
-Abstract
---------
+Project spec: Chat client
+=========================
 
 This application is a simple, browser-based chatroom, similar to IRC or Slack. It lets users exchange text messages in realtime, and also indicates user status (entering the room, typing, leaving the room).
 
