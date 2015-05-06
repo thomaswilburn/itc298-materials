@@ -86,7 +86,8 @@ Finally, we'll create our server and register routes in ``index.js``::
         html: require("handlebars")
       },
       path: "templates",
-      //let Hapi know about our layout template
+      //let Hapi know about our layout template folder
+      layoutPath: "layouts",
       layout: "default"
     });
     
@@ -106,7 +107,7 @@ Partials
 
 Layouts give us the ability to create multiple routes and use multiple views, while sharing the common framing elements of each page. In fact, Hapi also integrates with the Handlebars templating system to share inner elements as well, through a special kind of "partials" tag, which is composed of a ``>`` character and the name of the sub-template to include in the larger page. For example, the tag ``{{> bio}}`` includes the ``bio.html`` template into the page.
 
-Partials are a part of the `Mustache template language <https://mustache.github.io/mustache.5.html>`__ that's implemented by Handlebars. Mustache templating also provides a number of useful functions, such as block tags that loop through an array or object. Block tags are opened with a ``#`` and closed with a ``/`` character, followed by the name of the array or object property.
+Partials are a part of the `Mustache template language <https://mustache.github.io/mustache.5.html>`__ that's implemented by Handlebars. Mustache templating also provides a number of useful functions, such as section tags that loop through an array or object or act as conditionals. Section tags are opened with a ``#`` and closed with a ``/`` character, followed by the name of the array or object property, and everything in between will be repeated for each item in the collection.
 
 Let's try an example. We're going to feed a JavaScript object with a list of people in it to a template::
 
@@ -120,7 +121,7 @@ Let's try an example. We're going to feed a JavaScript object with a list of peo
       ]
     }
 
-Here's our view template, ``listings.html``::
+Here's our view template, ``partials/listings.html`` (note that it is in ``templates/partials``, a new subdirectory)::
 
     <section>
       <h2>{{group}}</h2>
@@ -135,7 +136,20 @@ And here's ``person.html``::
 
     <li> {{name}} from {{band}}
 
-Now, in our route handler, we'll call ``reply.view("listings", musicians)``. The listings template will replace ``{{group}}`` with "Musicians", then loop through ``musicians.people``, repeating the code between ``{{#people}}`` and ``{{/people}}`` for each item in that array. In this case, it includes ``person.html`` for each item. Inside the block, the ``{{name}}`` and ``{{band}}`` tags will refer to properties on the objects in the array. The resulting template output will be::
+We also need to update our server's view configuration::
+
+    server.views({
+      engines: {
+        html: require("handlebars")
+      },
+      path: "templates",
+      layoutPath: "layouts",
+      layout: "default",
+      //add a partials path
+      partialsPath: "templates/partials"
+    });
+
+Now, in our route handler, we'll call ``reply.view("listings", musicians)``. The listings template will replace ``{{group}}`` with "Musicians", then loop through ``musicians.people``, repeating the code between ``{{#people}}`` and ``{{/people}}`` for each item in that array. In this case, it includes ``person.html`` for each item. Inside the section, the ``{{name}}`` and ``{{band}}`` tags will refer to properties on the objects in the array. The resulting template output will be::
 
     <section>
       <h2>Musicians</h2>
@@ -147,15 +161,15 @@ Now, in our route handler, we'll call ``reply.view("listings", musicians)``. The
       </ul>
     </section>
 
-Of course, we don't have to use partials only in block helpers. They can be useful in many other places: sidebars, widgets, repeated design elements... any time that a part of the page might be repeated or re-used. Instead of building the page from scratch each time, we can create a vocabulary of building blocks, embedded in a common wrapper template.
+Of course, we don't have to use partials only in section helpers. They can be useful in many other places: sidebars, widgets, repeated design elements... any time that a part of the page might be repeated or re-used. Instead of building the page from scratch each time, we can create a vocabulary of building blocks, embedded in a common wrapper template.
 
 Homework assignment
 -------------------
 
-Combining static resources, layouts, and partials, it's possible to build any site in Hapi that would also be built in a system like WordPress. So let's put one together! Build a quick brochure site for a sandwich shop with the following pages:
+Combining static resources, layouts, and partials, it's possible to build any site in Hapi that would also be built in a system like WordPress. So let's put one together! Imagine that you have a hapless friend who loves to borrow books, movies, and CDs from you. You don't mind lending your stuff, but you would prefer to minimize browsing time in person, so create a website that basically inventories your shelves for your friend. It should have the following page types:
 
-* A home page, showing a picture of a sandwich and lorem text where the marketing copy would go.
-* A menu page with three named sandwiches, short descriptions, and prices
-* A page with a list of two shop locations
+* A home page that provides a short description of the site and a welcome message.
+* A list page for each media type, such as all your CDs or all your books.
+* A detail page, linked from the lists, that shows the metadata for a particular item (i.e., a book's author, page count, genre, and synopsis.
 
-All pages should share an outer frame, including navigation links to the three individual pages, a header, and a footer. The outer layout should also include links to CSS, served from the static resource directory. While working on the menu and location pages, think about how block tags could make them easier to build. Finally, consider whether there are any other repeated elements that a sandwich shop might share between pages, that partials might make easy to share.
+Additionally, these pages should share a common layout, including navigation and CSS that's shared between pages. Consider carefully where it will be easier to use Handlebars section tags and partials, rather than repeating your code or hand-coding the content.
