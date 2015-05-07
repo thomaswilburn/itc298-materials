@@ -1,29 +1,19 @@
-Project specifications: Blog content management system
-======================================================
+Project spec: Blog/Wiki
+=======================
 
-Difficulty
-----------
+A simple blog is always a good test of a web-based programming language. You can use any backing storage that you want for this, but the ``sqlite3`` module may be a good place to start. Think of this as your chance to write the kind of CMS that you've always wanted, free from the legacy problems of WordPress and other systems.
 
-3 out of 5
+Must-have requirements
+----------------------
 
-Abstract
---------
+* Provide a reverse-chronological stream of post content, with or without "read more" links
+* Provide single-post pages, possibly with a different layout
+* Allow users to create new posts from a web interface
 
-Implementing a blog is always a great test of any server-side language. This will implement a simple reverse-chronological blog, including tags/categories, with a simple interface for opening and editing posts.
+Nice-to-have requirements
+-------------------------
 
-Must-haves
-----------
-
-* Visitors should be able to view posts on the site in reverse-chronological order, with possible filtering by tag/category.
-* Authenticated users should be able to log in, author, and edit posts in a simple interface, setting the title, body, categories, and other metadata for the post.
-* Unauthenticated users should be blocked from seeing the admin, or posts that are marked draft/private.
-* Posts can be stored on the hard drive, in memory, or in a SQLite database.
-* It should be possible to easily edit templates, and to provide alternate "flavors" such as RSS.
-
-Nice-to-haves
--------------
-
-* Add alternate post views, such as excerpt mode.
-* Allow users to upload media files for use in posts.
-* Add a visual editor or a MarkDown mode, so that users can create formatted posts without having to know HTML.
-* Allow users to write plugins that can process the text of posts, for "pirate mode" or embedding external media easily (a la shortcodes)
+* Restrict post creation to authenticated users only
+* Allow users to write their own page templates
+* Allow users to attach tags or categories to posts, and filter the stream based on them
+* Provide a search function
