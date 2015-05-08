@@ -44,4 +44,4 @@ In addition to participation, all grades from this class will be determined via 
 
 The goal of the final project is to provide a portfolio piece for students: something that can be taken into interviews and serve as an example of a real, working (if somewhat basic) application. It'll be written using HapiJS on the server, and Backbone on the client, with a Grunt build process running alongside for JS packaging and CSS preprocessing.
 
-Students are welcome to choose a possible final project on their own, but it must be approved by the instructor. Project ideas will also be provided, for students who just want to get something built. 
+Students are welcome to choose a possible final project on their own, but it must be approved by the instructor. Project ideas will also be provided, for students who just want to get something built. A more precise description of the project requirements is available `here <https://github.com/thomaswilburn/itc298-materials/tree/master/final_project.rst>`__.
