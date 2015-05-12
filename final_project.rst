@@ -20,11 +20,11 @@ Storage
 
 The entire point of a server, honestly, is to provide persistent storage between browsers. If we want to write applications that don't store anything, most of the time we can do that just with a static HTML page. Servers allow us to persist state between pages, and between sessions (i.e., different computers or after the browser is closed).
 
-I am agnostic as to how you choose to store information on your server. You may do it using the file system, a database, a web API, or something. However, you must both read and write from the storage for your final project to pass muster. Below you'll find an example of how each backing store might work, as well as a recommended NPM module that you might use for it:
+I am agnostic as to how you choose to store information on your server. You may do it using the file system, a database, a web API, or something else entirely. However, you must both read and write from the storage for your final project to pass muster. Below you'll find an example of how each backing store might work, as well as a recommended NPM module that you might use for it:
 
 * *File system* - Read and write files that are stored in JSON format. Recommended module: ``fs`` (built-in, not on NPM)
 * *Database* - Use SQL to create a table, read from it, and insert/delete rows based on user action, same as you would in PHP. Recommended module: ``sqlite3``, which creates small local databases without having to run a separate MySQL or Postgres server.
-* *Web API* - Talk to an endpoint like Twitter or Google Docs to read and write information. Recommended module: varies by API, although the ``twitter`` module is excellent and can be used to both send and received posts from the service.
+* *Web API* - Talk to an endpoint like Twitter or Google Docs to read and write information. For example, a Twitter bot might read incoming posts, and then reply to them. Recommended module: varies by API, although the ``twitter`` module is excellent and can be used to both send and received posts from the service.
 
 Multi-user login
 ----------------
