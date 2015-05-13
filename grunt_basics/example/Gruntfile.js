@@ -3,8 +3,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-nodemon");
   grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks("grunt-autoprefixer");
   
   grunt.initConfig({
+    //concurrent runs simultaneous tasks -- our server and our watch task
     concurrent: {
       dev: {
         tasks: ["nodemon", "watch"],
@@ -13,20 +15,46 @@ module.exports = function(grunt) {
         }
       }
     },
+    //nodemon tracks and restarts our server for us
     nodemon: {
       dev: {
         script: "index.js"
       }
     },
+    //autoprefixer processes CSS for us and adds browser prefixes
+    autoprefixer: {
+      dev: {
+        //puts files in the target directory
+        flatten: true,
+        //uses a globbing pattern instead of reading a single file
+        expand: true,
+        src: "src/css/*.css",
+        dest: "build/css"
+      }
+    },
+    //watch performs tasks whenever we save matching files
     watch: {
+      //turn on live reload for all targets
+      options: {
+        livereload: true
+      },
+      //css target - just does autoprefixing when CSS files change
       css: {
-        files: "*.css",
-        tasks: ["test"]
+        files: "src/**/*.css",
+        tasks: ["autoprefixer"]
+      },
+      //html target - triggers live reload when templates are edited
+      html: {
+        files: "**/*.html",
+        tasks: []
       }
     }
   });
+  //by default, regenerates CSS and then runs our long-lived processes (Hapi server and watch)
+  grunt.registerTask("default", ["autoprefixer", "concurrent"]);
   
-  grunt.registerTask("default", ["concurrent"]);
-  grunt.registerTask("test", console.log.bind(console));
+  //this task does nothing, it's just used to kick over live reload
+  grunt.registerTask("nothing", function() {});
+  
 
 };
