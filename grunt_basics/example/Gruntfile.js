@@ -46,6 +46,7 @@ module.exports = function(grunt) {
       //html target - triggers live reload when templates are edited
       html: {
         files: "**/*.html",
+        //no tasks, just live reload
         tasks: []
       }
     }
@@ -53,8 +54,4 @@ module.exports = function(grunt) {
   //by default, regenerates CSS and then runs our long-lived processes (Hapi server and watch)
   grunt.registerTask("default", ["autoprefixer", "concurrent"]);
   
-  //this task does nothing, it's just used to kick over live reload
-  grunt.registerTask("nothing", function() {});
-  
-
 };
