@@ -109,7 +109,7 @@ With a view that uses it::
 
 The responsibility of a view is to connect a model to the screen for input and output. It does so by rendering the model into the template for output (after converting it to a regular, non-Backbone object with the ``toJSON()`` function), and by connecting event listeners from the ``events`` config object for input.
 
-When we define this view, for simplicity's sake, we're going to tell it to use the body of the document for its element. Typically, we would set this when calling the ``new CalculatorView()`` constructor, but this makes for a simpler demonstration. We do pass in the model for this view, which is the ``calc`` object we created above. In the ``initialize`` method, which is called whenever the object is created, we tell our view to listen to its model, and to re-render itself whenever the model fires a "change" event for its ``value`` attribute.
+When we define this view, for simplicity's sake, we're going to tell it to use the body of the document for its element. Typically, we would set this when calling the ``new CalculatorView()`` constructor, but this makes for a simpler demonstration. We do pass in the model for this view, which is the ``calc`` object we created above. In the ``initialize`` method, which is called whenever the object is created, we tell our view to listen to events on its model (which, remember is the ``calc`` object), and to re-render itself whenever the model fires a "change" event for its ``value`` attribute.
 
 Tying it together
 -----------------
@@ -128,4 +128,20 @@ Next, you might press the + button to add two numbers together. That triggers an
 4. Our calculator adds the numbers together, and sets its ``value`` attribute to the result.
 5. Because our view listens to "change:value" events on our model, this causes the view to re-render itself with the new result, thus updating the page and letting us see the final calculation.
 
-This behavior sequence is quite sophisticated, but it's relatively simple to configure. Backbone holds our hand through much of the process if we'll let it, connecting models to views and vice versa, so tht each is able to react to changes in the other appropriately.
+This behavior sequence is quite sophisticated, but it's relatively simple to configure. Backbone holds our hand through much of the process if we'll let it, connecting models to views and vice versa, so that each is able to react to changes in the other appropriately.
+
+Why we use Backbone
+-------------------
+
+One reaction to this code is that it seems overly complicated: why should I use this to make a calculator, when I could just build it in a few lines of jQuery? This is a reasonable reaction, but it misses the point. It's fine to throw together a few lines of jQuery when you're just adding a little enhancement to a page: a drop-down menu, an animated transition, or a quick tab container.
+
+The goal of Backbone is not to solve those problems. It's to solve the problem of building a much larger application in the browser, one that has multiple views and lots of user interaction. The process of wiring up event listeners and keeping track of which variables represent which portions of the UI becomes untenable without something to structure it. By setting up your models and views using Backbone, it's much clearer which pieces are connected because there's a standard method to the madness, similar to the way that Hapi makes it easier for us to reason about server code because it gives us a solid framework to build on.
+
+Further reading
+---------------
+
+There's no shortage of good resources to use when learning Backbone, but the following links may prove particularly helpful:
+
+* `BackboneJS.com <backbonejs.com>`__ - the official site contains not only API docs and examples, but also annotated source code so you can look at what it's doing for you.
+* `TodoMVC <todomvc.com/examples/backbone>`__ - a site that demonstrates various frameworks by building a todo list in all of them, its Backbone code should be considered reasonably comprehensive.
+* `Developing Backbone fundamentals <http://addyosmani.github.io/backbone-fundamentals/>`__ - although slightly dated, this free O'Reilly book by Addy Osmani is a great reference to the basics.

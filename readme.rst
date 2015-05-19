@@ -31,7 +31,7 @@ Course outline
 4. `Intro to HapiJS <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_hapi>`__ - routes, responses, and configuration
 5. `HapiJS site basics <https://github.com/thomaswilburn/itc298-materials/tree/master/hapi_basics>`__ - public resources, advanced Handlebars templating
 6. Intro to Grunt - basic configuration, plugins, and file watchers
-7. Intro to Backbone - client-side MVC and templating
+7. `Intro to Backbone <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_backbone>`__ - client-side MVC and templating
 8. Packaging resources with Browserify
 9. HapiJS special topics - authentication and sessions
 
