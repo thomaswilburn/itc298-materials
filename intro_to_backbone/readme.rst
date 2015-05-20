@@ -142,6 +142,6 @@ Further reading
 
 There's no shortage of good resources to use when learning Backbone, but the following links may prove particularly helpful:
 
-* `BackboneJS.com <backbonejs.com>`__ - the official site contains not only API docs and examples, but also annotated source code so you can look at what it's doing for you.
-* `TodoMVC <todomvc.com/examples/backbone>`__ - a site that demonstrates various frameworks by building a todo list in all of them, its Backbone code should be considered reasonably comprehensive.
+* `BackboneJS.com <http://backbonejs.com>`__ - the official site contains not only API docs and examples, but also annotated source code so you can look at what it's doing for you.
+* `TodoMVC <http://todomvc.com/examples/backbone>`__ - a site that demonstrates various frameworks by building a todo list in all of them, its Backbone code should be considered reasonably comprehensive.
 * `Developing Backbone fundamentals <http://addyosmani.github.io/backbone-fundamentals/>`__ - although slightly dated, this free O'Reilly book by Addy Osmani is a great reference to the basics.
