@@ -1,0 +1,13 @@
+<h1>Project Tracker</h1>
+
+<p>
+  Below, you'll find a list of all projects currently in the system. <a href="/projects/new">Click here</a> to create a new project.
+</p>
+
+<ul>
+  {{#projects}}
+    <li>
+      <a href="/projects/{{rowid}}">{{name}}</a>
+    </li>
+  {{/projects}}
+</ul>

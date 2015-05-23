@@ -1,0 +1,21 @@
+{
+  "name": "sqlite-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.0.0",
+    "backbone": "^1.2.0",
+    "handlebars": "^3.0.3",
+    "hapi": "^8.5.1",
+    "sqlite3": "^3.0.8"
+  }
+}
