@@ -15,7 +15,12 @@ module.exports = function(req, reply) {
   //get model details and then return the page
   model.set("id", id);
   model.load(function(err) {
-    var data = model.toJSON();
+    var data;
+    if (err) {
+      console.log(err);
+    } else {
+      data = model.toJSON();
+    }
     reply.view("project", {
       title: data.name,
       project: data

@@ -19,7 +19,10 @@ server.views({
   engines: {
     html: require("handlebars")
   },
-  isCached: false
+  isCached: false,
+  context: {
+    dev: true
+  }
 });
 
 server.route(require("./routes"));

@@ -10,6 +10,6 @@ module.exports = function(req, reply) {
     //reload data
     var response = reply("Saved!");
     response.statusCode = 302;
-    response.headers.Location = "/projects/" + model.get("id");
+    response.headers.Location = "/projects";
   });
 };

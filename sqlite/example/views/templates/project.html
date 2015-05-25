@@ -1,16 +1,16 @@
 <h1>Edit project</h1>
 
-<form action="/projects/{{project.id}}" method="POST">
+<form action="/projects/{{project.id}}" method="POST" class="edit-project">
   <input type="hidden" name="id" value="{{project.id}}">
-  <div>
+  <div class="form-row">
     <label>Project name</label>
     <input name="name" value="{{project.name}}">
   </div>
-  <div>
+  <div class="form-row">
     <label>Client</label>
     <input name="client" value="{{project.client}}">
   </div>
-  <div>
+  <div class="form-row">
     <label>Billing address</label>
     <textarea name="address">{{project.address}}</textarea>
   </div>
