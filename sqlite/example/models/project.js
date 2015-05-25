@@ -35,15 +35,6 @@ module.exports = Backbone.Model.extend({
       $client: data.client,
       $address: data.address,
       $id: id == "new" ? undefined : data.id
-    }, function() {
-      if (id == "new") {
-        return db.connection.get(LAST, function(err, row) {
-          console.log("New project inserted at %s", row.rowid);
-          self.set("id", row.rowid);
-          done();
-        });
-      }
-      done();
-    });
+    }, done);
   }
 });
