@@ -9,3 +9,5 @@ This page links to the live video recordings taken in class. I'll try to tape ea
 * `April 28, 2015: Intro to HapiJS and Node servers <https://youtu.be/2hNMcT_gDJo>`__
 * `May 6, 2015: Hapi templating features <https://youtu.be/HOjWBnA2pP4>`__
 * `May 12, 2015: Grunt basics <https://youtu.be/mW3l2IpY02k>`__
+* `May 19, 2015: Intro to Backbone <https://youtu.be/-NVfxOGelSI>`__
+* `May 26, 2015: SQLite <https://youtu.be/yoCe-BRS210>`__
