@@ -32,15 +32,15 @@ Course outline
 5. `HapiJS site basics <https://github.com/thomaswilburn/itc298-materials/tree/master/hapi_basics>`__ - public resources, advanced Handlebars templating
 6. Intro to Grunt - basic configuration, plugins, and file watchers
 7. `Intro to Backbone <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_backbone>`__ - client-side MVC and templating
-8. Packaging resources with Browserify
-9. HapiJS special topics - authentication and sessions
+8. `SQLite3 for Node <https://github.com/thomaswilburn/itc298-materials/tree/master/sqlite`__ - Simple databases for small web apps
+8. Server-side Backbone - writing models and using collections
 
 Topics will be covered in this class at a rate of one per week. Tuesdays will be lecture, and Thursdays will be a directed lab, with students working independently or in small groups to solve a small problem based on that week's topic. Toward the end of the quarter, this may be instead spent on consulting time for the final project.
 
 Final project
 -------------
 
-In addition to participation, all grades from this class will be determined via a final project, to be written in JavaScript and spanning both the client and server. 
+In addition to participation, all grades from this class will be determined via a final project, to be written in JavaScript and spanning both the client and server. The final project is due on Tuesday, June 16.
 
 The goal of the final project is to provide a portfolio piece for students: something that can be taken into interviews and serve as an example of a real, working (if somewhat basic) application. It'll be written using HapiJS on the server, and Backbone on the client, with a Grunt build process running alongside for JS packaging and CSS preprocessing.
 
