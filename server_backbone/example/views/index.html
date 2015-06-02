@@ -1,0 +1,13 @@
+<ul class="reminder-list">
+{{#reminders}}
+  <li>
+    {{#complete}}<i class="fa fa-check-square-o"></i>{{/complete}}
+    {{^complete}}<i class="fa fa-square-o"></i>{{/complete}}
+    {{description}}
+    {{^complete}}
+      <form class="mark-form" action="/mark/{{id}}" method="POST">
+        <button>Finished!</button>
+      </form>
+    {{/complete}}
+{{/reminders}}
+</ul>

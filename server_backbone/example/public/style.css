@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+}
+
+nav {
+  font-weight: bold;
+}
+
+nav a {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 3px;
+  border: 1px solid #DDD;
+  color: black;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: #EEE;
+}
+
+.reminder-list {
+  list-style-type: none;
+}
+
+.reminder-list .mark-form {
+  display: inline;
+}
