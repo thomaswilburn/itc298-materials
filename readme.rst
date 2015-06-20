@@ -32,8 +32,8 @@ Course outline
 5. `HapiJS site basics <https://github.com/thomaswilburn/itc298-materials/tree/master/hapi_basics>`__ - public resources, advanced Handlebars templating
 6. Intro to Grunt - basic configuration, plugins, and file watchers
 7. `Intro to Backbone <https://github.com/thomaswilburn/itc298-materials/tree/master/intro_to_backbone>`__ - client-side MVC and templating
-8. `SQLite3 for Node <https://github.com/thomaswilburn/itc298-materials/tree/master/sqlite`__ - Simple databases for small web apps
-8. Server-side Backbone - writing models and using collections
+8. `SQLite3 for Node <https://github.com/thomaswilburn/itc298-materials/tree/master/sqlite>`__ - Simple databases for small web apps
+9. Server-side Backbone - writing models and using collections
 
 Topics will be covered in this class at a rate of one per week. Tuesdays will be lecture, and Thursdays will be a directed lab, with students working independently or in small groups to solve a small problem based on that week's topic. Toward the end of the quarter, this may be instead spent on consulting time for the final project.
 
